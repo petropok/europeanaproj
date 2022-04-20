@@ -64,11 +64,13 @@
   border-bottom-color: #fff;
 }
 
+
 #searchbox {
     margin: 2%;
 }
 
 .card {
+  display: inline-block;
   margin-bottom: 1rem;
 }
 
