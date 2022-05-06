@@ -5,107 +5,171 @@
   <title>Europeana Search</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
   <link rel="stylesheet" href="./styles/bootstrap.min.css">
   <link rel="stylesheet" href="./styles/index.css">
+  <script src="./scripts/bootstrap.min.js"></script>
+  <script type="module" src="./scripts/search.js"></script>
 </head>
 
 <body>
 
   <header>
-    <div class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar navbar-expand-md navbar-dark bg-dark fixed-top shadow">
       <div class="container">
         <div class="navbar-brand d-flex align-items-center">
           <strong>E/S</strong>
-          </adiv>
         </div>
+      <ul class="navbar-nav ms-auto">
+        <li>
+          <a class="btn btn-outline-success" href="https://github.com/petropok/europeanaproj">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            Github
+          </a>
+        </li>
+      </ul>
       </div>
+    </div>
   </header>
 
-  <main>
-    <p class="lead">
-    <div class="container">
-      <div class="row">
-        <div class="form-group mx-sm-3 mb-2">
-          <form id="SearchForm">
-            <div class="input-group">
-              <input id="searchbox" type="search" class="form-control form-control-lg rounded-3" name="search"
-                placeholder="Mona lisa, Starry Night, etc.">
-            </div>
-            <p class="lead">
-            <div class="collapse" id="collapsing">
-              <div class="card card-body">
-                <div class="row g-2">
-                  <div class="col-md">
-                    <div class="form-floating">
-                      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                        <option value="1" selected>Title</option>
-                        <option value="2">Creator</option>
-                        <option value="3">Country</option>
-                      </select>
-                      <label for="floatingSelect">Search For</label>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block text-white bg-dark sidebar collapse" style="position:fixed; height: 100%;">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Select Server</span>
+              </h6>
+              <input type="radio" class="btn-check" name="btnradio" id="europeana" autocomplete="off" checked>
+              <label class="btn btn-outline-primary" for="europeana">Europeana</label>
+            
+              <input type="radio" class="btn-check" name="btnradio" id="local" autocomplete="off">
+              <label class="btn btn-outline-primary" for="local">Local</label>
+            </li>
+            
+            <li class="nav-item">
+              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Media Types</span>
+              </h6>
+              <input type="checkbox" class="btn-check" id="images" autocomplete="off" checked>
+              <label class="btn btn-outline-warning" for="images">IMAGES</label>
+            
+              <input type="checkbox" class="btn-check" id="sounds" autocomplete="off" checked>
+              <label class="btn btn-outline-warning" for="sounds">SOUNDS</label>
+            
+              <input type="checkbox" class="btn-check" id="texts" autocomplete="off" checked>
+              <label class="btn btn-outline-warning" for="texts">TEXT</label>
+
+              <input type="checkbox" class="btn-check" id="videos" autocomplete="off" checked>
+              <label class="btn btn-outline-warning" for="videos">VIDEO</label>
+            
+              <input type="checkbox" class="btn-check" id="3ds" autocomplete="off" checked>
+              <label class="btn btn-outline-warning" for="3ds">3D</label>
+              
+            </li>
+            <li class="nav-item">
+              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Search Options</span>
+              </h6>
+              <ul>
+                <li>title: -Search by title</li>
+                <li>who: -Search by creator</li>
+                <li>where: -Search by location</li>
+                <li>when: -Search by time</li>
+                <li>Also logical opperators are supported:
+                  <ul>
+                    <li>OR</li>
+                    <li>AND</li>
+                    <li>NOT</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Examples</span>
+              </h6>
+              <ul>
+                <li>
+                  <i>Mona Lisa who:"Leonardo da Vinci"</i>
+                </li>
+                <li>
+                  <i>where:(London OR Paris)</i>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+      <main class="col-md-9 ms-sm-auto col-lg-10">
+        <div class=" flex-wrap  pt-3 pb-2 mb-3 border-bottom">
+        <p class="lead">
+        <div class="container">
+          
+            <div class="form-group mx-sm-3 mb-2">
+              <form id="SearchForm">
+                <div class="input-group" id="searchgroup">
+                  <span class="input-group-text" id="inputGroup-sizing-lg"><i class="material-icons-sharp">search</i></span>
+                  <input id="searchbox" type="search" class="form-control form-control-lg rounded-3" name="search"
+                    placeholder="Mona lisa, Starry Night, etc." aria-label="Search input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+                <p class="lead">
+                <div class="clearfix">
+                  <button class="btn btn-primary mb-2 btn-lg fw-bold" id="searchbtn">
+                    <div id="bef-click">
+                      Search Results
                     </div>
-                  </div>
-                  <div class="col-md">
-                    <div class="form-floating">
-                      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                        <option value="1" selected>Everything</option>
-                        <option value="2">Sounds</option>
-                        <option value="3">Images</option>
-                      </select>
-                      <label for="floatingSelect">Type of Data</label>
+                    <div id="aft-click" hidden>
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      <span class="sr-only">Loading...</span>
                     </div>
-                  </div>
+                  </button>
+                  <!-- <button type="button" class="btn btn-outline-secondary mb-2 btn-lg fw-bold" data-bs-toggle="collapse"
+                    data-bs-target="#collapsing" aria-expanded="false" aria-controls="collapsing">Help</button> -->
                 </div>
-              </div>
+                </p>
+              </form>
             </div>
-            <div class="clearfix">
-              <button class="btn btn-primary mb-2 btn-lg fw-bold" id="searchbtn">
-                <div id="bef-click">
-                  Search Results
-                </div>
-                <div id="aft-click" hidden>
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </button>
-              <button type="button" class="btn btn-outline-secondary mb-2 btn-lg fw-bold" data-bs-toggle="collapse"
-                data-bs-target="#collapsing" aria-expanded="false" aria-controls="collapsing">Settings</button>
+        </div>
+        </p>
+        <div class="album py-5 bg-light">
+          <div class="container" id="cont">
+            <div class="card-columns" id="results"></div>
+            <div class="jumbotron">
+              <h1 class="display-4">Your Search results will appear here</h1>
+              <p class="lead">This is a simple banner placed strategically here so the web page doesnt seem so blank</p>
+              <hr class="my-4">
+              <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
             </div>
+          </div>
+        </div>
+        <!-- <div style="padding: 5%;"></div> -->
+        <div id="pagination-container"></div>
+        <footer class="text-muted py-5 bg-dark rounded">
+          <div class="container">
+            <p class="float-end mb-1">
+              <a href="#">Back to top</a>
             </p>
-          </form>
-        </div>
+            <p class="mb-1">Europeana Search 2022 &copy;</p>
+            <p class="mb-0">New to Europeana Search? <a href="https://github.com/petropok/europeanaproj">Visit our Github</a> or the <a
+                href="https://www.europeana.eu/en">Europeana Official Site</a>.</p>
+          </div>
+        </footer>
       </div>
+      </main>
     </div>
-    </p>
-    <div class="album py-5 bg-light">
-      <div class="container" id="cont">
-        <div class="card-columns" id="results"></div>
-        <div class="jumbotron">
-          <h1 class="display-4">Your Search results will a appear here</h1>
-          <p class="lead">This is a simple banner placed strategically here so the web page doesnt seem so blank</p>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        </div>
-      </div>
-    </div>
-    <div style="padding: 10%;"></div>
-  </main>
-
-  <footer class="text-muted py-5 bg-dark">
-    <div class="container">
-      <p class="float-end mb-1">
-        <a href="#">Back to top</a>
-      </p>
-      <p class="mb-1">Europeana Search 2022 &copy;</p>
-      <p class="mb-0">New to Europeana Search? <a href="/">Visit the homepage</a> or read our <a
-          href="https://www.europeana.eu/en">Europeana Official Site</a>.</p>
-    </div>
-  </footer>
+  </div>
 
 
-  <script src="./scripts/bootstrap.min.js"></script>
-  <script type="module" src="./scripts/search.js"></script>
+
+
 
 
 </body>

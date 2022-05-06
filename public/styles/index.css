@@ -1,6 +1,25 @@
 /*
  * Globals
  */
+
+ .btn-label {
+	position: relative;
+	left: -12px;
+	display: inline-block;
+	padding: 6px 12px;
+	background: rgba(0, 0, 0, 0.15);
+	border-radius: 3px 0 0 3px;
+}
+
+.btn-labeled {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.btn {
+	margin-bottom: 10px;
+}
+
  .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -32,6 +51,10 @@
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 } */
+
+body {
+  padding-top: 3rem;
+}
 
 .cover-container {
   max-width: 42em;
@@ -65,7 +88,7 @@
 }
 
 
-#searchbox {
+#searchgroup {
     margin: 2%;
 }
 
@@ -80,7 +103,7 @@
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {  
-  .card-columns {column-count: 3;}
+  .card-columns {column-count: 2;}
 }
 
 /* Large devices (desktops, 992px and up) */
