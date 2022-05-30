@@ -21,7 +21,6 @@ app.get('/search',function(req,res){
     media: true ,
     thumbnail: true
   };
-  console.log("page: ",page, "limit: ", limit);
   if(req.query.img === 'true'){ qf.push('TYPE:IMAGE'); }
   if(req.query.snd === 'true'){ qf.push('TYPE:SOUND'); }
   if(req.query.txt === 'true'){ qf.push('TYPE:TEXT'); }
@@ -34,8 +33,6 @@ app.get('/search',function(req,res){
       qftext += ' OR ';
     }
   }
-  console.log("search: ",req.query.search, "start", params['start'], "rows: ", params['rows']);
-  //console.log(qftext, "aha");
   params['qf'] = qftext;
 
   europeana ('search', params, function(err, data) {

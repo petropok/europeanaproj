@@ -115,3 +115,18 @@ body {
 @media (min-width: 1200px) {  
    .card-columns {column-count: 4;} 
 }
+
+
+@media screen and (min-width: 1200px) {
+  .bricklayer-column-sizer {
+    /* divide by 3. */
+    width: 33.3%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bricklayer-column-sizer {
+    /* divide by 2. */
+    width: 50%;
+  }
+}
