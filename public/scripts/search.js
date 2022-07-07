@@ -163,7 +163,7 @@ function query(search, pag, page, limit, cache) {
       
       
       container.innerHTML += `
-        <div class="card shadow-sm" style="width: 18rem;">
+        <div class="grid-item card shadow-sm" style="width: 18rem;">
         ${media}
           <div class="card-body">
             <p class="card-text">${title}</p>
@@ -321,3 +321,16 @@ document.getElementById('searchbtn').onclick = function () {
   document.getElementById("bef-click").removeAttribute("hidden"); 
   return false;
 };
+
+var elem = document.querySelector('.grid');
+var msnry = new Masonry( elem, {
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: 200
+});
+
+// element argument can be a selector string
+//   for an individual element
+var msnry = new Masonry( '.grid', {
+  // options
+});

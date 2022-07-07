@@ -114,7 +114,6 @@
 
       <main>
         <div class=" flex-wrap  pt-3 pb-2 mb-3 border-bottom">
-        <p class="lead">
         <div class="container">
           
             <div class="form-group mx-sm-3 mb-2">
@@ -124,7 +123,6 @@
                   <input id="searchbox" type="search" class="form-control form-control-lg rounded-3" name="search"
                     placeholder="Mona lisa, Starry Night, etc." aria-label="Search input" aria-describedby="inputGroup-sizing-lg">
                 </div>
-                <p class="lead">
                 <div class="clearfix">
                   <button class="btn btn-primary mb-2 btn-lg fw-bold" id="searchbtn">
                     <div id="bef-click">
@@ -136,14 +134,13 @@
                     </div>
                   </button>
                 </div>
-                </p>
               </form>
             </div>
         </div>
-        </p>
-        <div class="album py-5 bg-light">
+        <!-- <div class="container" id="cont"></div> -->
+        <div class="py-5 bg-light">
           <div class="container" id="cont">
-            <div class="card-columns" id="results"></div>
+            <div class="row" id="results"></div>
             <div class="jumbotron">
               <h1 class="display-4">Your Search results will appear here</h1>
               <p class="lead">This is a simple banner placed strategically here so the web page doesnt seem so blank</p>
@@ -165,12 +162,7 @@
         </footer>
       </main>
   </div>
-
-
-
-
-
-
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </body>
 
 </html>
